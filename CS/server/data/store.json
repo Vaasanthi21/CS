@@ -1,0 +1,67 @@
+{
+  "users": [
+    {
+      "id": "240d6569-da91-4569-a94a-7ced53d6918c",
+      "email": "superadmin@creativestudio.com",
+      "full_name": "Super Admin",
+      "company": "Creative Studio OS",
+      "role": "superadmin",
+      "status": "active",
+      "password_hash": "$2a$10$fvgk2dcEl2xIYajjbSpKO.qzSClrbRt2vawhmS3Ct6LUpd8neBXhq",
+      "created_at": "2026-04-30T12:03:12.607Z",
+      "plan_id": null,
+      "plan_name": "Admin"
+    },
+    {
+      "email": "testing+475258860@gmail.com",
+      "full_name": "Testing User",
+      "company": "Test Co",
+      "role": "user",
+      "status": "active",
+      "password_hash": "$2a$10$hrZ3J16S.H2foGvfOY/RG.6r31/Zd2nreYpYR7XJrkoxi.3Tb2you",
+      "created_at": "2026-04-30T12:05:27.973Z",
+      "plan_id": "73450bd1-172f-46ea-ad82-828ad0671fed",
+      "plan_name": "Free",
+      "id": "4fce9351-3d00-4ae7-a1a0-0fac815ecce5"
+    },
+    {
+      "email": "mongodb-test-1004822366@test.com",
+      "full_name": "MongoDB Setup Test",
+      "company": "Test Company",
+      "role": "user",
+      "status": "active",
+      "password_hash": "$2a$10$Lv3zAEptIoKiVAyJVIXU9.jpTBVzGU9H2JXcOrtbPqvZBqzS/jBxK",
+      "created_at": "2026-04-30T16:04:41.901Z",
+      "plan_id": "73450bd1-172f-46ea-ad82-828ad0671fed",
+      "plan_name": "Free",
+      "id": "f434d772-d837-4384-8c37-f791b7bece12"
+    }
+  ],
+  "plans": [
+    {
+      "id": "73450bd1-172f-46ea-ad82-828ad0671fed",
+      "name": "Free",
+      "price_monthly": 0,
+      "credits_limit": 25,
+      "status": "active",
+      "created_at": "2026-04-30T12:03:12.542Z"
+    },
+    {
+      "id": "d4185f73-d164-4d97-8471-370d99021469",
+      "name": "Pro",
+      "price_monthly": 29,
+      "credits_limit": 500,
+      "status": "active",
+      "created_at": "2026-04-30T12:03:12.542Z"
+    },
+    {
+      "id": "d290e8f0-7ddd-45fe-9b75-f667157f0fa8",
+      "name": "Enterprise",
+      "price_monthly": 199,
+      "credits_limit": 5000,
+      "status": "active",
+      "created_at": "2026-04-30T12:03:12.542Z"
+    }
+  ],
+  "content_history": []
+}

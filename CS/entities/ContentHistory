@@ -1,0 +1,71 @@
+{
+  "name": "ContentHistory",
+  "type": "object",
+  "properties": {
+    "topic": {
+      "type": "string",
+      "description": "The topic used for generation"
+    },
+    "persona": {
+      "type": "string",
+      "description": "Persona ID used"
+    },
+    "persona_label": {
+      "type": "string",
+      "description": "Display name of the persona"
+    },
+    "content_type": {
+      "type": "string",
+      "description": "Type of content generated"
+    },
+    "tone": {
+      "type": "number",
+      "description": "Tone value 0-100"
+    },
+    "length": {
+      "type": "number",
+      "description": "Length value 0-100"
+    },
+    "keywords": {
+      "type": "string",
+      "description": "Comma-separated keywords"
+    },
+    "variants": {
+      "type": "array",
+      "description": "Generated content variants",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "word_count": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "completed",
+        "failed",
+        "deleted"
+      ],
+      "default": "completed"
+    },
+    "deleted_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Soft delete timestamp"
+    }
+  },
+  "required": [
+    "topic",
+    "persona",
+    "content_type"
+  ]
+}

@@ -18,14 +18,14 @@ const channelColors = {
 export function ThemeProvider({ children, activeChannel }) {
   const [theme, setTheme] = useState(() => {
     const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
-    return storedTheme || 'light';
+    return storedTheme || "light";
   });
 
   useEffect(() => {
     localStorage.setItem(THEME_STORAGE_KEY, theme);
   }, [theme]);
 
-  // Pick persona color based on active channel
+  // Persona color based on active channel
   const personaColor = channelColors[activeChannel] || "#333";
 
   const contextValue = useMemo(
@@ -35,7 +35,10 @@ export function ThemeProvider({ children, activeChannel }) {
 
   return (
     <ThemeContext.Provider value={contextValue}>
-      {children}
+      {/* 👇 Apply theme class here */}
+      <div className={theme}>
+        {children}
+      </div>
     </ThemeContext.Provider>
   );
 }

@@ -51,9 +51,10 @@ export default function PersonaSelector({ activePlatform, onSelect }) {
                     onClick={() => onSelect(platform.id)}
                     className={`group relative overflow-hidden rounded-2xl border p-4 text-left transition-all duration-200 ${
                       isActive
-                        ? "border-primary/70 bg-primary/[0.08] shadow-[0_18px_40px_-28px_rgba(249,115,22,0.9)]"
+                        ? "border-primary/70 shadow-[0_18px_40px_-28px_rgba(249,115,22,0.9)]"
                         : "border-border/70 bg-muted/20 hover:-translate-y-0.5 hover:border-primary/30 hover:bg-muted/40"
                     }`}
+                    style={isActive ? { backgroundColor: platform.color + "22" } : {}}
                   >
                     <div
                       className="absolute inset-x-0 top-0 h-px opacity-70"
@@ -79,9 +80,7 @@ export default function PersonaSelector({ activePlatform, onSelect }) {
                       </span>
                     </div>
 
-                    <div
-                      className="mt-4"
-                    >
+                    <div className="mt-4">
                       <p className="text-sm font-semibold text-foreground">{platform.label}</p>
                       <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{platform.description}</p>
                     </div>

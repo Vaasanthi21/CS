@@ -3,6 +3,17 @@ import { Outlet, useLocation } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import TopNav from "./TopNav";
 
+// Channel → Color mapping
+const channelColors = {
+  instagram: "#E1306C",
+  linkedin: "#0077B5",
+  youtube: "#FF0000",
+  twitter: "#1DA1F2",
+  threads: "#000000",
+  facebook: "#1877F2",
+  github: "#333333",
+};
+
 export default function MainLayout() {
   const location = useLocation();
   const [activePersona, setActivePersona] = useState(() => {
@@ -20,8 +31,14 @@ export default function MainLayout() {
     setActivePersona(id);
   };
 
+  // 🎨 Adaptive persona color based on activePersona (channel)
+  const personaColor = channelColors[activePersona] || "#333";
+
   return (
-    <div className="flex h-screen overflow-hidden bg-background">
+    <div 
+      className="flex h-screen overflow-hidden bg-background"
+      style={{ backgroundColor: personaColor }} // apply adaptive color here
+    >
       {/* Mobile overlay */}
       {sidebarOpen && (
         <div

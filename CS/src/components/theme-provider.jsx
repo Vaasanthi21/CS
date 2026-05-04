@@ -1,34 +1,49 @@
 import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
-const ThemeContext = createContext(null);
-const THEME_STORAGE_KEY = 'creative_studio_theme';
+const THEME_STORAGE_KEY = 'theme';
 
-export default function ThemeProvider({ children }) {
-  const [theme, setThemeState] = useState(() => {
-    return window.localStorage.getItem(THEME_STORAGE_KEY) || 'dark';
+export const ThemeContext = createContext();
+
+// Channel → Color mapping
+const channelColors = {
+  instagram: "#E1306C",
+  linkedin: "#0077B5",
+  youtube: "#FF0000",
+  twitter: "#1DA1F2",
+  threads: "#000000",
+  facebook: "#1877F2",
+  github: "#333333",
+};
+
+export function ThemeProvider({ children, activeChannel }) {
+  const [theme, setTheme] = useState(() => {
+    const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+    return storedTheme || 'light';
   });
 
   useEffect(() => {
-    const root = document.documentElement;
-    root.classList.toggle('dark', theme === 'dark');
-    window.localStorage.setItem(THEME_STORAGE_KEY, theme);
+    localStorage.setItem(THEME_STORAGE_KEY, theme);
   }, [theme]);
 
-  const setTheme = (nextTheme) => {
-    setThemeState(nextTheme === 'light' ? 'light' : 'dark');
-  };
+  // Pick persona color based on active channel
+  const personaColor = channelColors[activeChannel] || "#333";
 
-  const value = useMemo(() => ({ theme, setTheme }), [theme]);
+  const contextValue = useMemo(
+    () => ({ theme, setTheme, personaColor }),
+    [theme, activeChannel]
+  );
 
-  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
+  return (
+    <ThemeContext.Provider value={contextValue}>
+      {children}
+    </ThemeContext.Provider>
+  );
 }
 
 export function useTheme() {
   const context = useContext(ThemeContext);
-
   if (!context) {
     throw new Error('useTheme must be used within a ThemeProvider');
   }
-
   return context;
 }

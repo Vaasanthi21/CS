@@ -25,8 +25,8 @@ export function ThemeProvider({ children, activeChannel }) {
     localStorage.setItem(THEME_STORAGE_KEY, theme);
   }, [theme]);
 
-  // Persona color based on active channel
-  const personaColor = channelColors[activeChannel] || "#333";
+  // Persona / platform color
+  const personaColor = channelColors[activeChannel] || "hsl(var(--primary))";
 
   const contextValue = useMemo(
     () => ({ theme, setTheme, personaColor }),
@@ -35,8 +35,14 @@ export function ThemeProvider({ children, activeChannel }) {
 
   return (
     <ThemeContext.Provider value={contextValue}>
-      {/* 👇 Apply theme class here */}
-      <div className={theme}>
+      {/* 👇 Apply theme class and override CSS variables */}
+      <div
+        className={theme}
+        style={{
+          ["--primary"]: personaColor,
+          ["--primary-foreground"]: "#fff", // keep text readable
+        }}
+      >
         {children}
       </div>
     </ThemeContext.Provider>

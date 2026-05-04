@@ -363,8 +363,12 @@ export default function GenerationForm({ activePersona, onGenerate, isGenerating
                 value={topic}
                 onChange={(event) => setTopic(event.target.value.slice(0, 500))}
                 placeholder="Describe the post idea, campaign angle, or announcement you want to turn into content."
-                className="min-h-36 rounded-2xl border-border/70 bg-muted/30 text-sm placeholder:text-muted-foreground"
+                className="min-h-36 rounded-2xl border border-border/70 px-3 py-2
+                          bg-background text-black 
+                          dark:bg-gray-900 dark:text-white dark:placeholder-gray-400 
+                          focus:outline-none focus:ring-2 focus:ring-primary text-sm"
               />
+
             </div>
           ) : (
             <div className="space-y-2">
